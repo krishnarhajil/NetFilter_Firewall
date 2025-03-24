@@ -1,0 +1,38 @@
+flush ruleset
+
+table inet filter {
+    chain input {
+        type filter hook input priority 0; policy drop;
+
+        # Allow loopback traffic
+        iif lo accept
+
+        # Allow established and related connections
+        ct state established,related accept
+
+        # Allow SSH from specific IP
+        ip saddr 192.168.1.100 tcp dport 22 accept
+
+        # GeoIP blocking (example: block Russia and China)
+        meta nfproto ipv4 ip saddr @china { drop }
+        meta nfproto ipv4 ip saddr @russia { drop }
+
+        # Rate limit connections to prevent brute force
+        tcp dport ssh limit rate 3/minute accept
+
+        # ICMP rules
+        ip protocol icmp accept
+        ip6 nexthdr icmpv6 accept
+
+        # Drop everything else
+        counter drop
+    }
+
+    chain forward {
+        type filter hook forward priority 0; policy drop;
+    }
+
+    chain output {
+        type filter hook output priority 0; policy accept;
+    }
+}
