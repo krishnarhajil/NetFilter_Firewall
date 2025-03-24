@@ -1,4 +1,4 @@
-# nft_Firewall
+# NetFilter_Firewall
 A Docker-based (containerized) firewall using nftables (Net Filter Tables).
 
 ## Project Overview
@@ -8,6 +8,7 @@ This project showcases a **Docker-based firewall** using `nftables` with advance
 - *SYN flood mitigation*.
 - *Automated IP blacklisting*.  
 - *Containerized environment*.
+
 
 ## Features and Functionalities
 **GeoIP Filtering**
@@ -32,6 +33,7 @@ This project showcases a **Docker-based firewall** using `nftables` with advance
 Ensure you have the following installed on your system:
 - Docker
 - Docker Compose
+
 
 ## Setup Instructions
 **Clone the Repository**
@@ -96,15 +98,18 @@ docker stop geo_container
 ```
 
 
+
 ## Why Use Docker Instead of Running on the Host?
 - Running the firewall inside a container **isolates it from the host system**, preventing accidental changes or security risks.
 - Docker ensures the entire firewall setup can be easily **ported and replicated** on different machines without manual configuration.
 - Docker makes it easy to **start, stop, and manage** the firewall with simple commands.  
 
+
 ## Use Cases
 - This firewall can be used to protect personal servers by blocking foreign IPs and limiting DoS attempts.
 - It can be deployed in small-scale production environments to add an extra layer of protection.
 - Ideal for security labs and testing malicious traffic scenarios.
+
 
 ## Security Note
 This is a personal project designed for educational and testing purposes. Use it cautiously and avoid running it on production systems without proper review.
