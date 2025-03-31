@@ -39,7 +39,7 @@ Ensure you have the following installed on your system:
 **Clone the Repository**
 - First, clone the project repository:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/krishnarhajil/NetFilter_Firewall.git
 cd nftables_project
 ```
 - The Dockerfile already included the commands to install nftables and its dependencies.
